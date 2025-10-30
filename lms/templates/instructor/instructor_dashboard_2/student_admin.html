@@ -19,36 +19,32 @@
 </div>
 
 <div class="action-type-container">
-    
-        <br><br>
-        <h4 class="hd hd-4">${_("Download report of finished subsections")}</h4>
-        <br>
+  <br><br>
+  <h4 class="hd hd-4">${_("Download report of finished subsections")}</h4>
+  <br>
 
-        <span name="gradebook-link">
-          <a href="#CORUSE_ID" class="gradebook-link">${_("Download")}</a>
-        </span>
-        
-        <script>
-        document.addEventListener("DOMContentLoaded", () => {
-          const parts = location.pathname.split("/").filter(Boolean);
-          const ci = parts.indexOf("courses");
-          const courseId = ci !== -1 && parts[ci + 1] ? decodeURIComponent(parts[ci + 1]) : null;
-        
-          const a = document.querySelector('span[name="gradebook-link"] > a.gradebook-link[href="#CORUSE_ID"]');
-          if (a && courseId) {
-            // Pick the target you want:
-            // 1) Gradebook page:
-            // a.href = `/courses/${encodeURIComponent(courseId)}/gradebook/`;
-        
-            // 2) Instructor > Data Download (example):
-            a.href = `https://muhamedjamal.com:6545/courses/${encodeURIComponent(courseId)}/`;
-          }
-        });
-        </script>
+  <span name="gradebook-link">
+    <a href="#CORUSE_ID" class="gradebook-link">${_("Download")}</a>
+  </span>
 
-        <br><br>
-        <hr>
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var m = location.pathname.match(/\/courses\/([^/]+)\//);
+    var courseId = m ? decodeURIComponent(m[1]) : null;
+    var a = document.querySelector('span[name="gradebook-link"] > a.gradebook-link');
 
+    if (a && courseId) {
+      // خيار 1: صفحة الـ Gradebook داخل الـ LMS
+      // a.href = '/courses/' + encodeURIComponent(courseId) + '/gradebook/';
+
+      // خيار 2: خادوم الفلاسك/التقرير الخارجي
+      a.href = 'https://muhamedjamal.com:6545/courses/' + encodeURIComponent(courseId) + '/';
+    }
+  });
+  </script>
+
+  <br><br>
+  <hr>
 </div>
     
 <div class="student-enrollment-status-container action-type-container">
