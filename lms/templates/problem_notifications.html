@@ -9,9 +9,9 @@
     <div class="notification-btn-wrapper">
         {% if notification_name == 'hint' %}
         <button type="button" class="btn btn-default btn-small notification-btn hint-button">
-          {% trans "Next Hint" %}
+          {% trans "Next Hint"|escape %}
         </button>
         {% endif %}
-        <button type="button" class="btn btn-default btn-small notification-btn review-btn sr">{% trans "Review" %}</button>
+        <button type="button" class="btn btn-default btn-small notification-btn review-btn sr">{% trans "Review"|escape %}</button>
     </div>
 </div>

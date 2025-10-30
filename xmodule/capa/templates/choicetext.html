@@ -61,7 +61,7 @@
 
     {% if show_correctness == "never" %}
         {% if value or status != "unsubmitted" %}
-            <div class="capa_alert">{% trans submitted_message | escape %}</div>
+            <div class="capa_alert">{% trans submitted_message|escape %}</div>
         {% endif %}
     {% endif %}
     {% if msg %}

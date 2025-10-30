@@ -23,25 +23,25 @@
     <div class="problem-action-buttons-wrapper">
       {% if demand_hint_possible %}
       <span class="problem-action-button-wrapper">
-          <button type="button" class="hint-button problem-action-btn btn-link btn-small" data-value="{% trans 'Hint' | escape %}" {% if not should_enable_next_hint %}disabled{% endif %}>{% trans 'Hint' | escape %}</button>
+          <button type="button" class="hint-button problem-action-btn btn-link btn-small" data-value="{% trans 'Hint'|escape %}" {% if not should_enable_next_hint %}disabled{% endif %}>{% trans 'Hint'|escape %}</button>
       </span>
       {% endif %}
       {% if save_button %}
       <span class="problem-action-button-wrapper">
-          <button type="button" class="save problem-action-btn btn-link btn-small" data-value="{% trans 'Save' | escape %}">
-              <span aria-hidden="true">{% trans 'Save' | escape %}</span>
-              <span class="sr">{% trans "Save your answer" | escape %}</span>
+          <button type="button" class="save problem-action-btn btn-link btn-small" data-value="{% trans 'Save'|escape %}">
+              <span aria-hidden="true">{% trans 'Save'|escape %}</span>
+              <span class="sr">{% trans "Save your answer"|escape %}</span>
           </button>
       </span>
       {% endif %}
       {% if attempts_used and reset_button %}
       <span class="problem-action-button-wrapper">
-          <button type="button" class="reset problem-action-btn btn-link btn-small" data-value="{% trans 'Reset' | escape %}"><span aria-hidden="true">{% trans 'Reset' | escape %}</span><span class="sr">{% trans 'Reset your answer' | escape %}</span></button>
+          <button type="button" class="reset problem-action-btn btn-link btn-small" data-value="{% trans 'Reset'|escape %}"><span aria-hidden="true">{% trans 'Reset'|escape %}</span><span class="sr">{% trans 'Reset your answer'|escape %}</span></button>
       </span>
       {% endif %}
       {% if answer_available %}
       <span class="problem-action-button-wrapper">
-          <button type="button" class="show problem-action-btn btn-link btn-small" aria-describedby="{{ short_id }}-problem-title"><span class="show-label">{% trans 'Show answer' | escape %}</span></button>
+          <button type="button" class="show problem-action-btn btn-link btn-small" aria-describedby="{{ short_id }}-problem-title"><span class="show-label">{% trans 'Show answer'|escape %}</span></button>
       </span>
       {% endif %}
     </div>
@@ -84,13 +84,12 @@
       <div class="submission-feedback {% if submit_disabled_cta %}cta-enabled{% endif %}" id="submission_feedback_{{ short_id }}">
         {% comment %} When attempts are not 0, the CTA above will contain a message about the number of used attempts {% endcomment %}
         {% if attempts_allowed and not submit_disabled_cta or attempts_allowed and attempts_used == 0 %}
-          {# xss-lint: disable=django-blocktrans-missing-escape-filter #}
           {% blocktrans count num_total=attempts_allowed %}You have used {{ attempts_used|escape }} of {{ num_total|escape }} attempt.{% plural %}You have used {{ attempts_used|escape }} of {{ num_total|escape }} attempts{% endblocktrans %}
         {% endif %}
         {% if grading_method %}
-          <div>{% trans "Grading method:" | escape %} {{ grading_method }}</div>
+          <div>{% trans "Grading method:"|escape %} {{ grading_method }}</div>
         {% endif %}
-        <span class="sr">{% trans "Some problems have options such as save, reset, hints, or show answer. These options follow the Submit button." | escape %}</span>
+        <span class="sr">{% trans "Some problems have options such as save, reset, hints, or show answer. These options follow the Submit button."|escape %}</span>
       </div>
     </div>
   </div>
@@ -140,7 +139,7 @@
       notification_message=save_message
       is_hidden=not has_saved_answers %}
     
-    {% trans "Answers are displayed within the problem" | escape as notification_message %}
+    {% trans "Answers are displayed within the problem"|escape as notification_message %}
     {% with notification_message=notification_message %}
       {% include "problem_notifications.html" with
         notification_type='general'
