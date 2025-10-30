@@ -61,8 +61,7 @@
 
     {% if show_correctness == "never" %}
         {% if value or status != "unsubmitted" %}
-            {# xss-lint: disable=django-trans-escape-filter-parse-error #}
-            <div class="capa_alert">{% trans submitted_message %}</div>
+            <div class="capa_alert">{% trans submitted_message | escape %}</div>
         {% endif %}
     {% endif %}
     {% if msg %}
