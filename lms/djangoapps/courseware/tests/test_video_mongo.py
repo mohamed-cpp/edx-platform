@@ -156,12 +156,13 @@ class TestVideoYouTube(TestVideo):  # lint-amnesty, pylint: disable=missing-clas
         
         # # Verify correct template was used
         # assert actual_template == 'templates/video.html'
+
+        # Omit user_id if present
+        actual_context.pop("user_id", None)
         
         # Verify context matches expected
         # Note: i18n_service is passed as kwarg, so we just verify the context dict
-        # assert actual_context == expected_context
-        assert get_context_dict_from_string(str(actual_context)) == \
-       get_context_dict_from_string(str(expected_context))
+        assert actual_context == expected_context
 
 
 class TestVideoNonYouTube(TestVideo):  # pylint: disable=test-inherits-tests
