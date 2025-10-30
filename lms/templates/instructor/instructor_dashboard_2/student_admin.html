@@ -24,15 +24,15 @@
   <br>
 
   <span name="gradebook-link">
-    <a href="#CORUSE_ID" class="gradebook-link">${_("Download")}</a>
+    <a href="#CORUSE_ID" id="report_subsection" class="gradebook-link">${_("Download")}</a>
   </span>
 
   <script>
-  document.addEventListener("DOMContentLoaded", function () {
     var m = location.pathname.match(/\/courses\/([^/]+)\//);
     var courseId = m ? decodeURIComponent(m[1]) : null;
-    var a = document.querySelector('span[name="gradebook-link"] > a.gradebook-link');
-
+    var a = document.querySelector('#report_subsection');
+    console.log(a)
+    console.log(courseId)
     if (a && courseId) {
       // خيار 1: صفحة الـ Gradebook داخل الـ LMS
       // a.href = '/courses/' + encodeURIComponent(courseId) + '/gradebook/';
@@ -40,7 +40,6 @@
       // خيار 2: خادوم الفلاسك/التقرير الخارجي
       a.href = 'https://muhamedjamal.com:6545/courses/' + encodeURIComponent(courseId) + '/';
     }
-  });
   </script>
 
   <br><br>
